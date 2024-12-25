@@ -1,6 +1,7 @@
 'use client';
 import { SignedOut, SignInButton, UserButton, useUser } from "@clerk/nextjs";
 import { LogOut, LogOutIcon, } from "lucide-react";
+import Breadcrumb  from "./Breadcrumbs";
 
 
 const Header = () => {
@@ -15,6 +16,7 @@ const Header = () => {
             )}
 
             {/* Breadcrunbs */}
+            <Breadcrumb />  
 
             <div className="flex">
                 <SignedOut>
