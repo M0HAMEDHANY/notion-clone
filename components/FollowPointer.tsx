@@ -71,7 +71,6 @@ return (
             scale:0.5,
             opacity:0,
         }}
-        
         >
             {info.name || info.email}
         </motion.div>

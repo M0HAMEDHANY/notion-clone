@@ -8,13 +8,10 @@ import { doc, updateDoc } from "firebase/firestore";
 import { useDocumentData } from "react-firebase-hooks/firestore";
 
 
-
-
 function Document({ id }: { id: string }) {
     const [data, loading, error] = useDocumentData(doc(db, "documents", id));
     const [input, setInput] = useState("");
     const [isUpdating, startTransition] = useTransition();
-
 
     useEffect(() => {
         if (data) {
@@ -22,14 +19,18 @@ function Document({ id }: { id: string }) {
         }
     }, [data]);
 
-    const updateTitle = (e : FormEvent) => {
+    const updateTitle = (e: FormEvent) => {
         e.preventDefault();
-        if (input.trim()){
+        if (input.trim()) {
             startTransition(async () => {
-                await updateDoc(doc(db, "documents", id), {title: input});
-            })
+                await updateDoc(doc(db, "documents", id), { title: input });
+            });
         }
-    }
+    };
+
+    if (loading) return <p>Loading...</p>;
+    if (error) return <p>Error loading document: {error.message}</p>;
+    if (!data) return <p>No document found.</p>;
 
     return (
         <div>
@@ -40,7 +41,6 @@ function Document({ id }: { id: string }) {
                     <Input value={input} onChange={(e) => setInput(e.target.value)} />                    
                     <Button disabled={isUpdating}>{isUpdating ? 'Updating...' : 'Update'}</Button>
                     {/*  */}
-
                     {/*  */}
                 </form>
             </div>
