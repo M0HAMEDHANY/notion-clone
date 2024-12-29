@@ -1,31 +1,3 @@
-// import RoomProvider from "@/components/RoomProvider";
-// import { auth } from "@clerk/nextjs/server";
-
-// async function DocLayout({
-//   children,
-//   params,
-// }: {
-//   children: React.ReactNode;
-//   params: { id: string };
-// }) {
-//   // First await the params
-//   // console.log("DocumentPage rendering with params:", params);
-//   await auth.protect();
-  
-//   const { id } = await Promise.resolve(params);
-//   console.log("Layout rendering with ID:", id);
-
-//     // Then protect the route
-//     console.log("Auth protected successfully");
-
-//     return (
-//       <div>
-//         <div>Debug: Layout rendered</div>
-//         <RoomProvider roomId={id}>{children}</RoomProvider>
-//       </div>
-//     );
-// }
-// export default DocLayout;
 import RoomProvider from "@/components/RoomProvider";
 import { auth } from "@clerk/nextjs/server";
 
@@ -40,7 +12,7 @@ async function DocLayout({
   await auth.protect();
 
   const { id } = await params; // Ensure we are getting the ID from params
-  console.log("Layout rendering with ID:", id);
+  // console.log("Layout rendering with ID:", id);
 
   // Check if the ID is valid
   if (!id) {
@@ -49,7 +21,6 @@ async function DocLayout({
 
   return (
     <div>
-      <div>Debug: Layout rendered</div>
       <RoomProvider roomId={id}>{children}</RoomProvider>
     </div>
   );
