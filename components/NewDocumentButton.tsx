@@ -5,16 +5,16 @@ import { Button } from "./ui/button"
 import { useTransition } from "react"
 import { creatNewDocument } from "@/actions/actions";
 
+
 const NewDocumentButton = () => {
 
     const [isPending, startTransition] = useTransition();
     const router = useRouter();
 
-
     const handleCreatNewDocument = () => {
         startTransition( async () => {
             const {docId}= await creatNewDocument();
-            router.push(`/document/${docId}`);
+            router.push(`/doc/${docId}`);
         });
     }
 

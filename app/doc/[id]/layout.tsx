@@ -12,7 +12,7 @@ async function DocLayout({
   await auth.protect();
 
   const { id } = await params; // Ensure we are getting the ID from params
-  // console.log("Layout rendering with ID:", id);
+  console.log("Layout rendering with ID:", id);
 
   // Check if the ID is valid
   if (!id) {
