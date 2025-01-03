@@ -8,6 +8,7 @@ import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { useDocumentData } from "react-firebase-hooks/firestore";
 import LoadingSpinner from "./LoadingSpinner";
 import { useAuth } from "@clerk/nextjs";
+import Editor from "./Editor";
 
 function Document({ id }: { id: string }) {
   
@@ -120,6 +121,7 @@ function Document({ id }: { id: string }) {
         {/* Content placeholder for future implementation */}
         <hr className="pb-10" />
         {/* Collaborative editor will go here */}
+        <Editor />
       </div>
     </div>
   );

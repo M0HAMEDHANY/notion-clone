@@ -5,7 +5,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
     try{
-    await auth.protect();
+    auth.protect();
     const { sessionClaims } = await auth();
     // console.log("Session claims:", sessionClaims);
     if (!sessionClaims?.email) {
