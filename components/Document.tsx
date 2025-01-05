@@ -11,11 +11,8 @@ import { useAuth } from "@clerk/nextjs";
 import Editor from "./Editor";
 import useOwner from "../hooks/useOwner"
 import DeleteDocument from "./DeleteDocument";
-
-import { useUser } from "@clerk/nextjs";
-import { query, where } from "firebase/firestore";
-import { useCollection } from "react-firebase-hooks/firestore";
 import { useRoom } from "@liveblocks/react";
+import InviteUser from "./InviteUser";
 
 function Document({ id }: { id: string }) {
   
@@ -35,10 +32,10 @@ function Document({ id }: { id: string }) {
   // );
 
   // console.log("",test);
-  const isStringg = typeof room?.id === 'string';
-  console.log("room id is string: ",isStringg);
+  // const isStringg = typeof room?.id === 'string';
+  // console.log("room id is string: ",isStringg);
   
-  console.log("Room ID:", room?.id);
+  // console.log("Room ID:", room?.id);
 
 
       

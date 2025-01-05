@@ -11,7 +11,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { inviteUserToDocument } from "@/actions/actions";
+import { inviteUserToDocument } from "../actions/actions";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 
@@ -20,12 +20,18 @@ function InviteUser() {
   const [email, setEmail] = useState("");
   const [isPending, startTransition] = useTransition();
   const pathname = usePathname();
+  // console.log(email);
+  // console.log(pathname);
+  
+  
 
   const handleInvite = (event: FormEvent) => {
     event.preventDefault();
 
     const roomId = pathname.split("/").pop();
     if (!roomId) return;
+    console.log("invite room id ",roomId);
+    
 
     startTransition(async () => {
       const { success } = await inviteUserToDocument(roomId, email);

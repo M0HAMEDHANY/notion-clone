@@ -15,7 +15,7 @@ const useOwner = () => {
         room?.id ? query(collectionGroup(db, "rooms"), where("roomId", "==", room.id)) : null
         
     );
-    console.log([usersInRoom]); 
+    // console.log([usersInRoom]); 
     
     useEffect(() => {
         if (usersInRoom?.docs && usersInRoom.docs.length > 0) {
