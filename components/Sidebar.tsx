@@ -34,15 +34,22 @@ const Sidebar = () => {
     
     const { user } = useUser();
     const [data, loading, error] = useCollection(
-      user &&
+    user &&
         query(
-          collection(db, "documents"),
-          where("userId", "==", user?.primaryEmailAddress?.emailAddress)
+            collection(db, "documents"),
+            where("userId", "==", user?.primaryEmailAddress?.emailAddress)
         )
     );
 
     useEffect(() => {
         if (!data) return;
+
+        if (error) {
+            console.error("Error fetching documents:", error);
+            return;
+        }
+
+        
 
         // Group the documents by ownership
         const grouped = data.docs.reduce<{

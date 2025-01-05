@@ -4,11 +4,18 @@ import { FormEvent, useEffect, useState, useTransition } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { db } from "@/firebase";
-import { doc, getDoc, updateDoc } from "firebase/firestore";
+import { collectionGroup, doc, getDoc, updateDoc } from "firebase/firestore";
 import { useDocumentData } from "react-firebase-hooks/firestore";
 import LoadingSpinner from "./LoadingSpinner";
 import { useAuth } from "@clerk/nextjs";
 import Editor from "./Editor";
+import useOwner from "../hooks/useOwner"
+import DeleteDocument from "./DeleteDocument";
+
+import { useUser } from "@clerk/nextjs";
+import { query, where } from "firebase/firestore";
+import { useCollection } from "react-firebase-hooks/firestore";
+import { useRoom } from "@liveblocks/react";
 
 function Document({ id }: { id: string }) {
   
@@ -17,6 +24,25 @@ function Document({ id }: { id: string }) {
   const [input, setInput] = useState("");
   const [isUpdating, startTransition] = useTransition();
   const { getToken } = useAuth();
+  const isOwner = useOwner()
+  const room = useRoom();
+
+  
+  // const {user} = useUser();
+  // const [test] = useCollection(
+  //   user &&
+  //     query(collectionGroup(db, "rooms"), where("roomId", "==", room.id))
+  // );
+
+  // console.log("",test);
+  const isStringg = typeof room?.id === 'string';
+  console.log("room id is string: ",isStringg);
+  
+  console.log("Room ID:", room?.id);
+
+
+      
+
   
   // console.log("Document component rendering with id:", id);
   // console.log("Fetched document data:", data);
@@ -41,17 +67,17 @@ function Document({ id }: { id: string }) {
   //   fetchDocument();
   // }, [id]);
 
-  useEffect(() => {
-    const validateSession = async () => {
-      try {
-        const token = await getToken();
-        // console.log("Decoded Token:", token);
-      } catch (error) {
-        console.error("Token error:", error);
-      }
-    };
-    validateSession();
-  }, [getToken]);
+  // useEffect(() => {
+  //   const validateSession = async () => {
+  //     try {
+  //       const token = await getToken();
+  //       // console.log("Decoded Token:", token);
+  //     } catch (error) {
+  //       console.error("Token error:", error);
+  //     }
+  //   };
+  //   validateSession();
+  // }, [getToken]);
 
   useEffect(() => {
     if (data?.title) {
@@ -87,17 +113,17 @@ function Document({ id }: { id: string }) {
   if (!data) {
     console.warn("No data found for document ID:", id); // Log missing data
   }
-  if (!data?.title) {
-    return (
-      <div className="p-4 bg-yellow-50 text-yellow-700 rounded-lg">
-        <h3 className="font-semibold">Document Title Missing</h3>
-        <p>Please update the document title.</p>
-      </div>
-    );
-  }
+  // if (!data?.title) {
+  //   return (
+  //     <div className="p-4 bg-yellow-50 text-yellow-700 rounded-lg">
+  //       <h3 className="font-semibold">Document Title Missing</h3>
+  //       <p>Please update the document title.</p>
+  //     </div>
+  //   );
+  // }
 
   return (
-    <div className="p-4">
+    <div className="flex-1 h-full bg-white p-5">
       {/* Header */}
       <div className="flex max-w-6xl mx-auto justify-between pb-5">
         <form onSubmit={updateTitle} className="flex w-full space-x-2">
@@ -114,6 +140,15 @@ function Document({ id }: { id: string }) {
           >
             {isUpdating ? "Updating..." : "Update"}
           </Button>
+          {/* if owner */}
+          
+          {isOwner && (
+            <>
+              <InviteUser /> 
+              <DeleteDocument />
+            </>
+          )}
+          
         </form>
       </div>
 
