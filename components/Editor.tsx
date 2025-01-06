@@ -1,15 +1,15 @@
-import { useRoom, useSelf } from "@liveblocks/react/suspense";
-import { useEffect, useState } from "react";
-import * as Y from "yjs";
-import { LiveblocksYjsProvider } from "@liveblocks/yjs";
-import { Button } from "./ui/button";
-import { MoonIcon, SunIcon } from "lucide-react";
-import { BlockNoteView } from "@blocknote/shadcn";
 import { BlockNoteEditor } from "@blocknote/core";
 import { useCreateBlockNote } from "@blocknote/react";
+import { BlockNoteView } from "@blocknote/shadcn";
+import * as Y from "yjs";
+import { LiveblocksYjsProvider } from "@liveblocks/yjs";
+import { useRoom, useSelf } from "@liveblocks/react/suspense";
+import { useEffect, useState } from "react";
 import "@blocknote/core/fonts/inter.css";
 import "@blocknote/shadcn/style.css";
 import stringToColor from "@/lib/stringToColor";
+import { MoonIcon, SunIcon } from "lucide-react";
+import { Button } from "./ui/button";
 
 type EditorProps = {
   doc: Y.Doc;
@@ -42,10 +42,11 @@ function BlockNote({ doc, provider, darkMode }: EditorProps) {
   );
 }
 
+
 function Editor() {
   const room = useRoom();
   const [doc, setDoc] = useState<Y.Doc>();
-  const [provider, setProvider] = useState<LiveblocksYjsProvider>();
+  const [provider, setProvider] = useState<any>();
   const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {

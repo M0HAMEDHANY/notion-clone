@@ -13,6 +13,7 @@ import useOwner from "../hooks/useOwner"
 import DeleteDocument from "./DeleteDocument";
 import { useRoom } from "@liveblocks/react";
 import InviteUser from "./InviteUser";
+import ManageUsers from "./ManageUsers";
 
 function Document({ id }: { id: string }) {
   
@@ -137,24 +138,24 @@ function Document({ id }: { id: string }) {
           >
             {isUpdating ? "Updating..." : "Update"}
           </Button>
-          {/* if owner */}
-          
+
           {isOwner && (
             <>
-              <InviteUser /> 
+              <InviteUser />
               <DeleteDocument />
             </>
           )}
-          
         </form>
       </div>
 
-      <div className="max-w-6xl mx-auto">
-        {/* Content placeholder for future implementation */}
-        <hr className="pb-10" />
-        {/* Collaborative editor will go here */}
-        <Editor />
+      <div className="flex max-w-6xl mx-auto justify-between items-center mb-5">
+        <ManageUsers />
+        {/* <Avatars /> */}
       </div>
+
+      <hr className="pb-10" />
+
+      <Editor />
     </div>
   );
 }
