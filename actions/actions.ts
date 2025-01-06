@@ -14,9 +14,6 @@ export const creatNewDocument = async () => {
 
   const docRef = await adminDb.collection("documents").add({
     title: "Untitled",
-    createdAt: new Date().toISOString(),
-    userId: sessionClaims.email!,
-    lastUpdated: new Date().toISOString(),
   });
 
   // Create the room directly in the document's subcollection
