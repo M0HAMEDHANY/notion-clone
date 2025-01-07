@@ -42,7 +42,6 @@ function BlockNote({ doc, provider, darkMode }: EditorProps) {
   );
 }
 
-
 function Editor() {
   const room = useRoom();
   const [doc, setDoc] = useState<Y.Doc>();
@@ -75,15 +74,10 @@ function Editor() {
   return (
     <div className="max-w-6xl mx-auto">
       <div className="flex items-center gap-2 justify-end mb-10">
-        {/* translate doc ai */}
-        {/* chat to doc ai */}
-        {/* dark mode */}
         <Button className={style} onClick={() => setDarkMode(!darkMode)}>
           {darkMode ? <SunIcon /> : <MoonIcon />}
         </Button>
       </div>
-
-      {/* blocknote */}
       <BlockNote doc={doc} provider={provider} darkMode={darkMode} />
     </div>
   );

@@ -20,9 +20,6 @@ function InviteUser() {
   const [email, setEmail] = useState("");
   const [isPending, startTransition] = useTransition();
   const pathname = usePathname();
-  // console.log(email);
-  // console.log(pathname);
-  
   
 
   const handleInvite = (event: FormEvent) => {

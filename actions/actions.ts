@@ -61,7 +61,6 @@ export async function deleteDocument(roomId: string) {
   }
 }
 
-
 export async function inviteUserToDocument(roomId: string, email: string) {
   auth.protect();
 

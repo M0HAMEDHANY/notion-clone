@@ -9,13 +9,11 @@ const useOwner = () => {
     const [isOwner, setIsOwner] = useState(false);
     const { user } = useUser();
     const room = useRoom();
-    // console.log("Room id",room?.id);
     
     const [usersInRoom] = useCollection(
         room?.id ? query(collectionGroup(db, "rooms"), where("roomId", "==", room.id)) : null
         
     );
-    // console.log([usersInRoom]); 
     
     useEffect(() => {
         if (usersInRoom?.docs && usersInRoom.docs.length > 0) {

@@ -70,7 +70,6 @@ const menuOptions = (
     <>
         <NewDocumentButton />
         <div className="flex py-4 flex-col md:max-w-36">
-        {/* My Documents section */}
         {groupedData.owner.length === 0 ? (
             <h2 className="text-gray-500 font-semibold text-sm">
                 You have no documents
@@ -83,8 +82,6 @@ const menuOptions = (
                 ))}
             </>
         )}
-
-        {/* Shared with me section */}
         {groupedData.editor.length === 0 ? (
             <h2 className="text-gray-500 font-semibold text-sm">
                 You have no shared documents
