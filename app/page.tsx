@@ -6,7 +6,7 @@ export default function Home() {
       <main className="flex space-x-2 items-center animate-pulse">
         <ArrowLeftCircle className="w-12 h-12" />
         <h1 className="font-bold">
-          Lets Get Started With Creating a New Document
+          Get Started With Creating a New Document
         </h1>
       </main>
     </>

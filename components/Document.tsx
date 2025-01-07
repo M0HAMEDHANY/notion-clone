@@ -7,11 +7,9 @@ import { db } from "@/firebase";
 import { doc, updateDoc } from "firebase/firestore";
 import { useDocumentData } from "react-firebase-hooks/firestore";
 import LoadingSpinner from "./LoadingSpinner";
-import { useAuth } from "@clerk/nextjs";
 import Editor from "./Editor";
 import useOwner from "../hooks/useOwner"
 import DeleteDocument from "./DeleteDocument";
-import { useRoom } from "@liveblocks/react";
 import InviteUser from "./InviteUser";
 import ManageUsers from "./ManageUsers";
 import Avatars from "./Avatars";

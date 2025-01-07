@@ -5,7 +5,7 @@ import React from 'react'
 import FollowPointer from './FollowPointer';
 
 function LiveCursorProvider({children}:{children: React.ReactNode}) {
-    const [mypersence, UpdateMyPresence] = useMyPresence();
+    const [_mypersence, UpdateMyPresence] = useMyPresence();
     const others = useOthers();
 
 

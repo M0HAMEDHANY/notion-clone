@@ -7,7 +7,6 @@ export async function POST(req: NextRequest) {
   try {
     auth.protect();
     const { sessionClaims } = await auth();
-    // console.log("Session claims:", sessionClaims);
     if (!sessionClaims?.email) {
       return NextResponse.json(
         { message: "No valid session found" },
@@ -32,8 +31,6 @@ export async function POST(req: NextRequest) {
       .where("userId", "==", sessionClaims?.email!)
       .get();
 
-    // console.log("Found rooms:", usersInRoom.docs.map(doc => doc.id));
-    // console.log("Looking for room:", room);
     if (!room) {
       return NextResponse.json(
         { message: "Room ID is required" },
@@ -49,7 +46,6 @@ export async function POST(req: NextRequest) {
     if (userInRoom?.exists) {
       session.allow(room, session.FULL_ACCESS);
       const { body, status } = await session.authorize();
-      console.log("you are allowed to join this room");
       return new Response(body, { status });
     } else {
       return NextResponse.json(

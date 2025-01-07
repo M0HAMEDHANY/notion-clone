@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useDocumentData } from "react-firebase-hooks/firestore";
 
 function SlidebarOptions({ href, id }: { href: string; id: string }) {
-    const [data, loading, error] = useDocumentData(doc(db, "documents", id));
+    const [data, _loading, _error] = useDocumentData(doc(db, "documents", id));
     const pathName = usePathname();
     const isActive = href.includes(pathName) && pathName !== "/";
 
