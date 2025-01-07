@@ -8,8 +8,8 @@ import Sidebar from "@/components/Sidebar";
 import { Toaster } from "@/components/ui/sonner";
 
 export const metadata: Metadata = {
-  title: "notion clone",
-  description: "A Notion clone built with Next.js and Tailwind CSS",
+  title: "NotionX - Your Digital Workspace",
+  description: "A powerful Notion clone for organizing your work and life",
 };
 
 const geistSans = localFont({
@@ -33,12 +33,12 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+          className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-50`}
         >
           <Header />
-          <div className="flex min-h-screen">
+          <div className="flex min-h-[calc(100vh-4rem)]">
             <Sidebar />
-            <div className="flex-1 p-4 bg-gray-100 overflow-y-auto scrollbar-hide">
+            <div className="flex-1 overflow-y-auto scrollbar-hide">
               {children}
             </div>
           </div>

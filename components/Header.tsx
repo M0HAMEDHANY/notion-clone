@@ -1,6 +1,5 @@
 'use client';
 import { SignedOut, SignInButton, UserButton, useUser } from "@clerk/nextjs";
-import { LogOut, LogOutIcon, } from "lucide-react";
 import Breadcrumb  from "./Breadcrumbs";
 
 
@@ -10,25 +9,21 @@ const Header = () => {
     return (
         <div className="flex items-center justify-between p-3">
             {user && (
-                <h1 className="text-2xl text-primary font-bold">
+                <h1 className="lg:text-2xl text-1xl text-primary font-semibold">
                     {user.firstName}
                     {`'s `} Space
                 </h1>
             )}
 
-            <Breadcrumb />  
-
-            <div className="flex">
+            <div className="hidden md:block ml-auto">
+                <Breadcrumb />
+            </div> 
+            <div className="flex ml-auto">
                 <SignedOut>
                     <SignInButton />
                 </SignedOut>
-
                 <div className="flex gap-2">
                     <UserButton />
-                    <LogOut>
-                        <LogOutIcon />
-                    </LogOut>
-
                 </div>
             </div>
         </div>

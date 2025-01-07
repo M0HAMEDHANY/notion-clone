@@ -12,7 +12,7 @@ function SlidebarOptions({ href, id }: { href: string; id: string }) {
     if (!data) return null;
 
     return (
-        <Link href={href} className={`relative border p-2 my-1 rounded-md ${isActive ? "bg-gray-30 font-bold border-black text-primary" : "bg-primary text-primary-foreground hover:bg-primary/90border-gray-400"}`}>
+        <Link href={href} className={`relative border p-2 my-1 rounded-md w-46 ${isActive ? "bg-gray-30 font-bold border-black text-primary" : "bg-primary text-primary-foreground hover:bg-primary/90 border-gray-400"}`}>
             <p className="truncate">{data.title}</p>
         </Link>
     );

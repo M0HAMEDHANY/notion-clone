@@ -1,5 +1,3 @@
-"use client";
-
 import Document from "@/components/Document";
 
 async function DocumentPage({ params }: { params: Promise<{ id: string }> }) {

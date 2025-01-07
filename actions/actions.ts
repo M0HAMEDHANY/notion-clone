@@ -5,13 +5,8 @@ import liveblocks from "@/lib/liveblocks";
 import { auth } from "@clerk/nextjs/server";
 
 export const creatNewDocument = async () => {
-  auth.protect();
+
   const { sessionClaims } = await auth();
-
-  if (!sessionClaims?.email) {
-    throw new Error("No user email found in session");
-  }
-
   const docRef = await adminDb.collection("documents").add({
     title: "Untitled",
   });
