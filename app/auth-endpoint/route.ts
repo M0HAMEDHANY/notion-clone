@@ -13,10 +13,10 @@ export async function POST(req: NextRequest) {
         { status: 401 }
       );
     }
-    // if you try to inter the room you will get the pass through on the author endpoint
+    
     const { room } = await req.json();
 
-    //  then get the user who logged in and make a session with his e-mail
+    
     const session = liveblocks.prepareSession(sessionClaims?.email!, {
       userInfo: {
         name: sessionClaims?.fullName!,
@@ -25,7 +25,7 @@ export async function POST(req: NextRequest) {
       },
     });
 
-    // check the users db records to see all the rooms that this user has access to
+    
     const usersInRoom = await adminDb
       .collectionGroup("rooms")
       .where("userId", "==", sessionClaims?.email!)
@@ -38,11 +38,11 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    //  then ckeck if the room thatr we about the access
-    //  in the list of records that stored in the list of records that are stored in the users room collection
+    
+    
     const userInRoom = usersInRoom.docs.find((doc) => doc.id === room);
 
-    // if the user is in the room then we can proceed with the request
+    
     if (userInRoom?.exists) {
       session.allow(room, session.FULL_ACCESS);
       const { body, status } = await session.authorize();

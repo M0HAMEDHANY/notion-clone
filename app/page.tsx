@@ -1,4 +1,4 @@
-// page.tsx
+
 "use client";
 import React from 'react';
 import { FileText, Users, Sparkles } from "lucide-react";
@@ -33,7 +33,6 @@ export default function Home() {
   return (
     <div className={`min-h-screen w-full ${theme === "dark" ? "bg-gray-900 text-white" : "bg-gradient-to-b from-white to-gray-50"}`}>
       <div className="relative w-full">
-        {/* Background decoration - Adjusted for better mobile appearance */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <div className="absolute top-20 -left-10 w-48 h-48 md:w-72 md:h-72 bg-blue-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob" />
           <div className="absolute top-40 -right-10 w-48 h-48 md:w-72 md:h-72 bg-purple-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000" />
@@ -46,7 +45,6 @@ export default function Home() {
           initial="hidden"
           animate="visible"
         >
-          {/* Hero Section - Improved spacing and text sizing */}
           <motion.div
             className="text-center mb-8 md:mb-16"
             variants={itemVariants}
@@ -73,7 +71,7 @@ export default function Home() {
             </motion.div>
           </motion.div>
 
-          {/* Features Grid - Improved grid layout and spacing */}
+          {/* Features Grid */}
           <motion.div
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 mt-12 md:mt-20 px-4"
             variants={containerVariants}

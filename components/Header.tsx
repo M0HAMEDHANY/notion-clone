@@ -3,7 +3,6 @@ import { SignedOut, SignInButton, UserButton, useUser } from "@clerk/nextjs";
 import Breadcrumb from "./Breadcrumbs";
 import { Button } from "./ui/button";
 import { MoonIcon, SunIcon } from "lucide-react";
-import { useState, useEffect } from "react";
 import React from 'react';
 import { useTheme } from './ThemeProvider';
 

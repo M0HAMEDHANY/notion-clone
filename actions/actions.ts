@@ -5,13 +5,11 @@ import liveblocks from "@/lib/liveblocks";
 import { auth } from "@clerk/nextjs/server";
 
 export const creatNewDocument = async () => {
-
   const { sessionClaims } = await auth();
   const docRef = await adminDb.collection("documents").add({
     title: "Untitled",
   });
 
-  // Create the room directly in the document's subcollection
   await adminDb
     .collection("users")
     .doc(sessionClaims?.email!)
@@ -31,7 +29,6 @@ export async function deleteDocument(roomId: string) {
   auth.protect();
 
   try {
-    // Delete the document reference itself.
     await adminDb.collection("documents").doc(roomId).delete();
 
     const query = await adminDb
@@ -41,7 +38,6 @@ export async function deleteDocument(roomId: string) {
 
     const batch = adminDb.batch();
 
-    // Delete the room reference in the user's collection for every user in the room.
     query.docs.forEach((doc) => {
       batch.delete(doc.ref);
     });
@@ -78,7 +74,6 @@ export async function inviteUserToDocument(roomId: string, email: string) {
     return { success: false };
   }
 }
-
 
 export async function removeUserFromDocument(roomId: string, email: string) {
   auth.protect();

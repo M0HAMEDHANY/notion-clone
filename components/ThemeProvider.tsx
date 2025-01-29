@@ -16,17 +16,17 @@ type ThemeProviderState = {
 const ThemeProviderContext = createContext<ThemeProviderState | undefined>(undefined)
 
 export function ThemeProvider({ children }: ThemeProviderProps) {
-    // Initialize theme from localStorage if available, otherwise use system preference
+
     const [theme, setTheme] = useState<Theme>(() => {
-        // Check if we're in the browser
+
         if (typeof window !== 'undefined') {
             const stored = localStorage.getItem('theme') as Theme
             if (stored) return stored
 
-            // Check system preference
+
             return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
         }
-        return 'light' // Default for SSR
+        return 'light'
     })
 
     useEffect(() => {
