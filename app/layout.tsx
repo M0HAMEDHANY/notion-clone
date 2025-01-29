@@ -6,6 +6,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
 import { Toaster } from "@/components/ui/sonner";
+import { ThemeProvider } from "@/components/ThemeProvider";
 
 export const metadata: Metadata = {
   title: "NotionX - Your Digital Workspace",
@@ -33,16 +34,20 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-50`}
+          className={`${geistSans.variable} ${geistMono.variable} antialiased transition-colors duration-200`}
         >
-          <Header />
-          <div className="flex min-h-[calc(100vh-4rem)]">
-            <Sidebar />
-            <div className="flex-1 overflow-y-auto scrollbar-hide">
-              {children}
+          <ThemeProvider>
+            <div className="min-h-screen dark:bg-gray-900">
+              <Header />
+              <div className="flex min-h-[calc(100vh-4rem)]">
+                <Sidebar />
+                <div className="flex-1 overflow-y-auto scrollbar-hide">
+                  {children}
+                </div>
+              </div>
+              <Toaster position="top-center" />
             </div>
-          </div>
-          <Toaster position="top-center" />
+          </ThemeProvider>
         </body>
       </html>
     </ClerkProvider>

@@ -13,7 +13,8 @@ import { useUser } from "@clerk/nextjs"
 import { collectionGroup, where, query, DocumentData } from "firebase/firestore";
 import { db } from "@/firebase"
 import { useEffect, useState } from "react"
-import SlidebarOptions from "./SlidebarOptions"
+import { useTheme } from "./ThemeProvider"
+import SidebarOptions from "./SidebarOptions"
 interface RoomDocument extends DocumentData {
     createdAt: string;
     role: "owner" | "editor";
@@ -29,6 +30,7 @@ const Sidebar = () => {
         editor: [],
     });
     
+    const { theme } = useTheme();
     const { user } = useUser();
     const [data, _loading, _error] = useCollection(
         user && (
@@ -69,7 +71,7 @@ const Sidebar = () => {
 const menuOptions = (
     <>
         <NewDocumentButton />
-        <div className="flex py-4 flex-col md:max-w-36">
+        <div className="flex py-1 flex-col">
         {groupedData.owner.length === 0 ? (
             <h2 className="text-gray-500 font-semibold text-sm">
                 You have no documents
@@ -78,7 +80,7 @@ const menuOptions = (
             <>
                 <h2 className="text-gray-500 font-semibold text-sm">My Documents</h2>
                 {groupedData.owner.map((doc) => (
-                    <SlidebarOptions key={doc.id} id={doc.id} href={`/doc/${doc.id}`} />
+                    <SidebarOptions key={doc.id} id={doc.id} href={`/doc/${doc.id}`} />
                 ))}
             </>
         )}
@@ -90,7 +92,7 @@ const menuOptions = (
             <>
                 <h2 className="text-gray-500 font-semibold text-sm">Shared with me</h2>
                 {groupedData.editor.map((doc) => (
-                    <SlidebarOptions key={doc.id} id={doc.id} href={`/doc/${doc.id}`} />
+                    <SidebarOptions key={doc.id} id={doc.id} href={`/doc/${doc.id}`} />
                 ))}
             </>
         )}
@@ -98,15 +100,15 @@ const menuOptions = (
     </>
 );
     return (
-        <div className="p-2 md:p-5 bg-gray-200 relative">
+        <div className={` p-2 md:p-5 bg-gray-200 relative ${theme === "dark" ? "bg-gray-900 text-gray-200" : "bg-gray-200" }   `}>
             <div className="md:hidden">
                 <Sheet>
                     <SheetTrigger>
-                        <MenuSquareIcon size={24} />
+                        <MenuSquareIcon className={theme === "dark" ? "text-white" : "text-gray-700"} size={24} />
                     </SheetTrigger>
-                    <SheetContent side={"left"}>
+                    <SheetContent side={"left"} className={theme === "dark" ? "bg-gray-900" : "bg-white"}>
                         <SheetHeader>
-                            <SheetTitle>Menu</SheetTitle>
+                            <SheetTitle className={theme === "dark" ? "text-white" : "text-gray-900"}>Menu</SheetTitle>
                             <div>{menuOptions}</div>
                         </SheetHeader>
                     </SheetContent>

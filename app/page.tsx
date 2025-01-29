@@ -1,17 +1,21 @@
+"use client"
 import {
   FileText,
   Users,
 } from "lucide-react";
 import NewDocumentButton from "@/components/NewDocumentButton";
+import { useTheme } from "@/components/ThemeProvider";
 
 export default function Home() {
+  const { theme } = useTheme();
+
   return (
-    <div className="max-w-5xl px-4 mx-auto sm:px-6 lg:px-8 py-12 flex flex-col justify-center items-center">
+    <div className={`max-w-5xl px-4 mx-auto sm:px-6 lg:px-8 py-12 flex flex-col justify-center items-center ${theme === "dark" ? "bg-gray-900 text-white" : "bg-white"}`}>
       <main className="flex flex-col items-center justify-center">
         <h1 className="lg:text-8xl text-4xl font-semibold text-center mb-6 ">
           Welcome to Your Digital Workspace
         </h1>
-        <p className="text-xl text-center text-gray-600 mb-8">
+        <p className={`text-xl text-center ${theme === "dark" ? "text-gray-400" : "text-gray-600"} mb-8`}>
           Organize, collaborate, and create with ease.
         </p>
         <div className="flex justify-center mb-12">
@@ -41,13 +45,15 @@ interface FeatureCardProps {
 }
 
 function FeatureCard({ icon, title, description }: FeatureCardProps) {
+  const { theme } = useTheme();
+
   return (
-    <div className="bg-white p-6 rounded-lg shadow-md">
+    <div className={`p-6 rounded-lg shadow-md ${theme === "dark" ? "bg-gray-800" : "bg-white"}`}>
       <div className="flex items-center mb-4">
         {icon}
         <h3 className="text-xl font-semibold ml-3">{title}</h3>
       </div>
-      <p className="text-gray-600">{description}</p>
+      <p className={`${theme === "dark" ? "text-gray-400" : "text-gray-600"}`}>{description}</p>
     </div>
   );
 }

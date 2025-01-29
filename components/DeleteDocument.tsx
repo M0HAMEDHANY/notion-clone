@@ -46,7 +46,7 @@ function DeleteDocument() {
       </Button>
 
       <DialogContent>
-        <DialogHeader>
+        <DialogHeader className="bg-white dark:bg-gray-800 text-black dark:text-white">
           <DialogTitle>Are you absolutely sure?</DialogTitle>
           <DialogDescription>
             This will delete the document and all its contents, removing all
@@ -54,7 +54,7 @@ function DeleteDocument() {
           </DialogDescription>
         </DialogHeader>
 
-        <DialogFooter className="sm:justify-end gap-2">
+        <DialogFooter className="sm:justify-end gap-2 bg-white dark:bg-gray-800 text-black dark:text-white">
           <Button
             type="button"
             variant="destructive"

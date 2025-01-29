@@ -8,8 +8,9 @@ import { useEffect, useState } from "react";
 import "@blocknote/core/fonts/inter.css";
 import "@blocknote/shadcn/style.css";
 import stringToColor from "@/lib/stringToColor";
-import { MoonIcon, SunIcon } from "lucide-react";
-import { Button } from "./ui/button";
+// import { MoonIcon, SunIcon } from "lucide-react";
+// import { Button } from "./ui/button";
+import { useTheme } from "./ThemeProvider";
 
 type EditorProps = {
   doc: Y.Doc;
@@ -19,6 +20,7 @@ type EditorProps = {
 
 function BlockNote({ doc, provider, darkMode }: EditorProps) {
   const userInfo = useSelf((me) => me.info);
+  const { theme } = useTheme();
 
   const editor: BlockNoteEditor = useCreateBlockNote({
     collaboration: {
@@ -32,11 +34,11 @@ function BlockNote({ doc, provider, darkMode }: EditorProps) {
   });
 
   return (
-    <div className="relative max-w-6xl mx-auto">
+    <div className={`relative max-w-6xl mx-auto ${theme === "dark" ? "bg-gray-900" : "bg-white"}`}>
       <BlockNoteView
         className="min-h-screen"
         editor={editor}
-        theme={darkMode ? "dark" : "light"}
+        theme={theme === "dark" ? "dark" : "light"}
       />
     </div>
   );
@@ -46,7 +48,8 @@ function Editor() {
   const room = useRoom();
   const [doc, setDoc] = useState<Y.Doc>();
   const [provider, setProvider] = useState<any>();
-  const [darkMode, setDarkMode] = useState(false);
+  // const [darkMode, setDarkMode] = useState(false);
+  const { theme } = useTheme();
 
   useEffect(() => {
     const yDoc = new Y.Doc();
@@ -65,20 +68,15 @@ function Editor() {
     return null;
   }
 
-  const style = `hover:text-white ${
-    darkMode
-      ? "text-gray-300 bg-gray-700 hover:bg-gray-100 hover:text-gray-700"
-      : "text-gray-700 bg-gray-200 hover:bg-gray-300 hover:text-gray-700"
-  }`;
+  // const style = `hover:text-white ${
+  //   darkMode
+  // //     ? "text-gray-300 bg-gray-700 hover:bg-gray-100 hover:text-gray-700"
+  //     : "text-gray-700 bg-gray-200 hover:bg-gray-300 hover:text-gray-700"
+  // }`;
 
   return (
     <div className="max-w-6xl mx-auto">
-      <div className="flex items-center gap-2 justify-end mb-10">
-        <Button className={style} onClick={() => setDarkMode(!darkMode)}>
-          {darkMode ? <SunIcon /> : <MoonIcon />}
-        </Button>
-      </div>
-      <BlockNote doc={doc} provider={provider} darkMode={darkMode} />
+      <BlockNote doc={doc} provider={provider} darkMode={theme === "dark"} />
     </div>
   );
 }

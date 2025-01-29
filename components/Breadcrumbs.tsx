@@ -10,14 +10,15 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import { useTheme } from './ThemeProvider';
 
 
 function Breadcrumbs() {
     const path = usePathname();
     const segments = path.split("/").filter((segment) => segment !== "");
-    
+    const { theme } = useTheme();
     return (
-        <Breadcrumb>
+        <Breadcrumb className={` ${theme === "dark" ? "bg-gray-900 text-white" : "bg-white text-black"}`}>
             <BreadcrumbList>
             <BreadcrumbItem>
                 <BreadcrumbLink href="/">Home</BreadcrumbLink>
@@ -42,15 +43,6 @@ function Breadcrumbs() {
                     </Fragment>
                 )
             })}
-
-
-
-
-
-
-
-
-
             </BreadcrumbList>
         </Breadcrumb>
     );

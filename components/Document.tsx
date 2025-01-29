@@ -13,6 +13,7 @@ import DeleteDocument from "./DeleteDocument";
 import InviteUser from "./InviteUser";
 import ManageUsers from "./ManageUsers";
 import Avatars from "./Avatars";
+import { useTheme } from "./ThemeProvider";
 
 function Document({ id }: { id: string }) {
   const docRef = doc(db, "documents", id);
@@ -20,6 +21,7 @@ function Document({ id }: { id: string }) {
   const [input, setInput] = useState("");
   const [isUpdating, startTransition] = useTransition();
   const isOwner = useOwner();
+  const { theme } = useTheme();
 
   useEffect(() => {
     if (data?.title) {
@@ -56,7 +58,10 @@ function Document({ id }: { id: string }) {
   }
 
   return (
-    <div className="flex-1 h-full bg-white p-5">
+    <div className={`flex-1 h-full transition-colors duration-200 ${theme === "dark"
+        ? "bg-gray-900 text-white"
+        : "bg-white"
+      } p-5`}>
       <div className="flex flex-col gap-y-4">
         <div className="flex flex-col pb-5">
           <form
@@ -67,7 +72,10 @@ function Document({ id }: { id: string }) {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Document title"
-              className="flex-1"
+              className={`flex-1 ${theme === "dark"
+                  ? "bg-gray-800 text-white border-gray-700"
+                  : ""
+                }`}
             />
             <div className="flex gap-2">
               <Button
@@ -89,14 +97,13 @@ function Document({ id }: { id: string }) {
         </div>
       </div>
 
-      <div className="flex max-w-6xl mx-auto justify-between items-center mb-5">
+      <div className={`flex max-w-6xl mx-auto justify-between items-center mb-5 ${theme === "dark" ? "text-gray-200" : ""
+        }`}>
         <ManageUsers />
         <Avatars />
       </div>
 
-      <hr className="pb-10" />
-
-      <Editor />
+      <hr className={`pb-10 ${theme === "dark" ? "border-gray-800" : ""}`} />
     </div>
   );
 }

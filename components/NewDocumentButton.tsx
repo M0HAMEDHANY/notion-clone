@@ -5,17 +5,18 @@ import { Button } from "./ui/button";
 import { useTransition } from "react";
 import { creatNewDocument } from "@/actions/actions";
 import { useUser } from "@clerk/nextjs";
+import { useTheme } from "./ThemeProvider";
 
 const NewDocumentButton = () => {
   const [isPending, startTransition] = useTransition();
   const router = useRouter();
   const { isSignedIn } = useUser();
+  const { theme } = useTheme();
 
   const handleCreatNewDocument = () => {
     if (!isSignedIn) {
       router.push(
         "https://chief-lion-94.accounts.dev/sign-up?redirect_url=https://notion-clone-m0hamedhanys-projects.vercel.app/"
-        //"https://chief-lion-94.accounts.dev/sign-in?redirect_url=https%3A%2F%2Fnotion-clone-o7h1o2imn-m0hamedhanys-projects.vercel.app%2F"
       );
       return;
     }
@@ -27,7 +28,10 @@ const NewDocumentButton = () => {
   };
 
   return (
-    <Button onClick={handleCreatNewDocument} disabled={isPending}>
+    <Button onClick={handleCreatNewDocument} disabled={isPending} className={`${theme === "dark"
+      ? "bg-gray-300 text-gray-900 hover:bg-gray-800 hover:text-gray-300 border-gray-700"
+      : "bg-primary text-primary-foreground hover:bg-primary/90 border-gray-400"
+    }`}>
       {isPending ? "Creating..." : "Create New Document"}
     </Button>
   );
