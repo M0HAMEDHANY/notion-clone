@@ -8,8 +8,6 @@ import { useEffect, useState } from "react";
 import "@blocknote/core/fonts/inter.css";
 import "@blocknote/shadcn/style.css";
 import stringToColor from "@/lib/stringToColor";
-// import { MoonIcon, SunIcon } from "lucide-react";
-// import { Button } from "./ui/button";
 import { useTheme } from "./ThemeProvider";
 
 type EditorProps = {
@@ -34,11 +32,11 @@ function BlockNote({ doc, provider, darkMode }: EditorProps) {
   });
 
   return (
-    <div className={`relative max-w-6xl mx-auto ${theme === "dark" ? "bg-gray-900" : "bg-white"}`}>
+    <div className="relative w-full max-w-6xl mx-auto">
       <BlockNoteView
-        className="min-h-screen"
         editor={editor}
         theme={theme === "dark" ? "dark" : "light"}
+        className="min-h-[calc(100vh-8rem)] overflow-y-auto scrollbar-hide"
       />
     </div>
   );
@@ -48,7 +46,6 @@ function Editor() {
   const room = useRoom();
   const [doc, setDoc] = useState<Y.Doc>();
   const [provider, setProvider] = useState<any>();
-  // const [darkMode, setDarkMode] = useState(false);
   const { theme } = useTheme();
 
   useEffect(() => {
@@ -57,7 +54,6 @@ function Editor() {
     setDoc(yDoc);
     setProvider(yProvider);
 
-    // if the room changed destroy the old one
     return () => {
       yDoc?.destroy();
       yProvider?.destroy();
@@ -68,15 +64,17 @@ function Editor() {
     return null;
   }
 
-  // const style = `hover:text-white ${
-  //   darkMode
-  // //     ? "text-gray-300 bg-gray-700 hover:bg-gray-100 hover:text-gray-700"
-  //     : "text-gray-700 bg-gray-200 hover:bg-gray-300 hover:text-gray-700"
-  // }`;
-
   return (
-    <div className="max-w-6xl mx-auto">
-      <BlockNote doc={doc} provider={provider} darkMode={theme === "dark"} />
+    <div className="flex flex-col h-full">
+      <div className={`flex-1 w-full overflow-hidden ${theme === "dark" ? "bg-gray-900" : "bg-white"}`}>
+        <div className="h-full max-w-6xl mx-auto px-4">
+          <BlockNote
+            doc={doc}
+            provider={provider}
+            darkMode={theme === "dark"}
+          />
+        </div>
+      </div>
     </div>
   );
 }

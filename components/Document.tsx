@@ -59,8 +59,8 @@ function Document({ id }: { id: string }) {
 
   return (
     <div className={`flex-1 h-full transition-colors duration-200 ${theme === "dark"
-        ? "bg-gray-900 text-white"
-        : "bg-white"
+      ? "bg-gray-900 text-white"
+      : "bg-white"
       } p-5`}>
       <div className="flex flex-col gap-y-4">
         <div className="flex flex-col pb-5">
@@ -73,8 +73,8 @@ function Document({ id }: { id: string }) {
               onChange={(e) => setInput(e.target.value)}
               placeholder="Document title"
               className={`flex-1 ${theme === "dark"
-                  ? "bg-gray-800 text-white border-gray-700"
-                  : ""
+                ? "bg-gray-800 text-white border-gray-700"
+                : ""
                 }`}
             />
             <div className="flex gap-2">
@@ -104,6 +104,8 @@ function Document({ id }: { id: string }) {
       </div>
 
       <hr className={`pb-10 ${theme === "dark" ? "border-gray-800" : ""}`} />
+
+      <Editor />
     </div>
   );
 }

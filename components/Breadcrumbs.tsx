@@ -18,7 +18,7 @@ function Breadcrumbs() {
     const segments = path.split("/").filter((segment) => segment !== "");
     const { theme } = useTheme();
     return (
-        <Breadcrumb className={` ${theme === "dark" ? "bg-gray-900 text-white" : "bg-white text-black"}`}>
+        <Breadcrumb className={`${theme === "dark" ? "bg-gray-900 text-white" : "bg-white text-black"}`}>
             <BreadcrumbList>
             <BreadcrumbItem>
                 <BreadcrumbLink href="/">Home</BreadcrumbLink>

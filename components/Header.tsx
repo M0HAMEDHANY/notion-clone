@@ -7,7 +7,13 @@ import { useState, useEffect } from "react";
 import React from 'react';
 import { useTheme } from './ThemeProvider';
 
-const Header = () => {
+interface HeaderProps {
+
+    className?: string;
+
+}
+
+const Header: React.FC<HeaderProps> = ({ className }) => {
     const { user } = useUser();
     const { theme, toggleTheme } = useTheme();
     const style = `gap-2 hover:text-white ${theme === "dark"
@@ -16,28 +22,30 @@ const Header = () => {
         }`;
 
     return (
-        <div className="flex items-center justify-between p-3">
-            {user && (
-                <h1 className="lg:text-2xl text-1xl text-primary font-semibold">
-                    {user.firstName}
-                    {`'s `} Space
-                </h1>
-            )}
+        <div className={className}>
+            <div className="flex items-center justify-between p-3">
+                {user && (
+                    <h1 className="lg:text-2xl text-1xl text-primary font-semibold">
+                        {user.firstName}
+                        {`'s `} Space
+                    </h1>
+                )}
 
-            <div className="hidden md:block ml-auto">
-                <Breadcrumb />
-            </div>
-            <div className="flex ml-auto">
-                <div className="flex gap-2">
-                    <Button className={style} onClick={toggleTheme}>
-                        {theme === "dark" ? <SunIcon /> : <MoonIcon />}
-                    </Button>
-                    <UserButton />
+                <div className="hidden md:block ml-auto">
+                    <Breadcrumb />
                 </div>
-                <SignedOut>
-                    <SignInButton />
-                </SignedOut>
+                <div className="flex ml-auto">
+                    <div className="flex gap-2">
+                        <Button className={style} onClick={toggleTheme}>
+                            {theme === "dark" ? <SunIcon /> : <MoonIcon />}
+                        </Button>
+                        <UserButton />
+                    </div>
+                    <SignedOut>
+                        <SignInButton />
+                    </SignedOut>
 
+                </div>
             </div>
         </div>
     );
