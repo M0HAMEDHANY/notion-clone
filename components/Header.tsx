@@ -16,8 +16,8 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
     const { user } = useUser();
     const { theme, toggleTheme } = useTheme();
     const style = `gap-2 hover:text-white ${theme === "dark"
-        ? "text-gray-300 bg-gray-900 hover:bg-gray-100 hover:text-gray-700"
-        : "text-gray-700 bg-white hover:bg-gray-900 hover:text-gray-300"
+        ? "text-gray-300 bg-[#020817] hover:bg-gray-100 hover:text-gray-700"
+        : "text-gray-700 bg-white hover:bg-[#020817] hover:text-gray-300"
         }`;
 
     return (

@@ -59,7 +59,7 @@ function Document({ id }: { id: string }) {
 
   return (
     <div className={`flex-1 h-full transition-colors duration-200 ${theme === "dark"
-      ? "bg-gray-900 text-white"
+      ? "bg-[#020817] text-white"
       : "bg-white"
       } p-5`}>
       <div className="flex flex-col gap-y-4">

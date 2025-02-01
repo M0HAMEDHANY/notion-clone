@@ -31,7 +31,7 @@ export default function Home() {
   };
 
   return (
-    <div className={`min-h-screen w-full ${theme === "dark" ? "bg-gray-900 text-white" : "bg-gradient-to-b from-white to-gray-50"}`}>
+    <div className={`min-h-screen w-full ${theme === "dark" ? "bg-[#020817] text-white" : "bg-gradient-to-b from-white to-gray-50"}`}>
       <div className="relative w-full">
         <div className="absolute inset-0 z-0 overflow-hidden">
           <div className="absolute top-20 -left-10 w-48 h-48 md:w-72 md:h-72 bg-blue-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob" />
@@ -112,7 +112,7 @@ export default function Home() {
                 className="text-center p-4 rounded-lg bg-opacity-5 backdrop-blur-sm"
                 variants={itemVariants}
               >
-                <div className={`text-xl md:text-3xl font-bold mb-1 md:mb-2 ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
+                <div className={`text-xl md:text-3xl font-bold mb-1 md:mb-2 ${theme === "dark" ? "text-white" : "text-[#020817]"}`}>
                   {stat.value}
                 </div>
                 <div className={`text-sm md:text-base ${theme === "dark" ? "text-gray-400" : "text-gray-600"}`}>

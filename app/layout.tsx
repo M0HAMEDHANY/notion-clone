@@ -33,11 +33,11 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en" className="h-full overflow-hidden">
-        <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased transition-colors duration-200 h-full `}
-        >
-          <ThemeProvider>
-            <div className="h-full flex flex-col dark:bg-gray-900">
+        <ThemeProvider>
+          <body
+            className={`${geistSans.variable} ${geistMono.variable} antialiased transition-colors duration-200 h-full `}
+          >
+            <div className="h-full flex flex-col dark:bg-[#020817]">
               <Header className="sticky top-0 z-50 border-b" />
               <div className="flex-1 flex min-h-0">
                 <Sidebar className="flex border-r overflow-y-auto" />
@@ -47,8 +47,8 @@ export default function RootLayout({
               </div>
               <Toaster position="top-center" />
             </div>
-          </ThemeProvider>
-        </body>
+          </body>
+        </ThemeProvider>
       </html>
     </ClerkProvider>
   );

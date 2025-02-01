@@ -107,15 +107,15 @@ const Sidebar: React.FC<SidebarProps> = ({ className }) => {
     );
     return (
         <div className={` ${className}  scrollbar-hide`}>
-            <div className={` p-2 md:p-5  relative ${theme === "dark" ? "bg-gray-900 text-gray-200" : "bg-gray-200"}   `}>
+            <div className={` p-2 md:p-5  relative ${theme === "dark" ? "bg-[#020817] text-gray-200" : "bg-gray-200"}   `}>
                 <div className="md:hidden">
                     <Sheet>
                         <SheetTrigger>
                             <MenuSquareIcon className={theme === "dark" ? "text-white" : "text-gray-700"} size={24} />
                         </SheetTrigger>
-                        <SheetContent side={"left"} className={theme === "dark" ? "bg-gray-900" : "bg-white"}>
+                        <SheetContent side={"left"} className={theme === "dark" ? "bg-[#020817]" : "bg-white"}>
                             <SheetHeader>
-                                <SheetTitle className={theme === "dark" ? "text-white" : "text-gray-900"}>Menu</SheetTitle>
+                                <SheetTitle className={theme === "dark" ? "text-white" : "text-[#020817]"}>Menu</SheetTitle>
                                 <div className="overflow-y-auto scrollbar-hide">{menuOptions}</div>
                             </SheetHeader>
                         </SheetContent>

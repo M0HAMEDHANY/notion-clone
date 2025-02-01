@@ -32,7 +32,7 @@ function BlockNote({ doc, provider, darkMode }: EditorProps) {
   });
 
   return (
-    <div className="relative w-full max-w-6xl mx-auto">
+    <div className="relative w-full max-w-10xl mx-auto">
       <BlockNoteView
         editor={editor}
         theme={theme === "dark" ? "dark" : "light"}
@@ -66,8 +66,8 @@ function Editor() {
 
   return (
     <div className="flex flex-col h-full">
-      <div className={`flex-1 w-full overflow-hidden ${theme === "dark" ? "bg-gray-900" : "bg-white"}`}>
-        <div className="h-full max-w-6xl mx-auto px-4">
+      <div className={`flex-1 w-full overflow-hidden ${theme === "dark" ? "bg-[#020817]" : "bg-white"}`}>
+        <div className="h-full max-w-10xl mx-auto">
           <BlockNote
             doc={doc}
             provider={provider}

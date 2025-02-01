@@ -17,9 +17,9 @@ function SidebarOptions({ href, id }: { href: string; id: string }) {
         <Link
             href={href}
             className={`relative border p-2 my-1 rounded-md w-46 ${isActive
-                ? `${theme === "dark" ? "bg-gray-900" : "bg-gray-300"} font-bold border-primary text-primary`
+                ? `${theme === "dark" ? "bg-[#020817]" : "bg-gray-300"} font-bold border-primary text-primary`
                 : `${theme === "dark"
-                    ? "bg-gray-300 text-gray-900 hover:bg-gray-800 hover:text-gray-300 border-gray-700"
+                    ? "bg-gray-300 text-[#020817] hover:bg-gray-800 hover:text-gray-300 border-gray-700"
                     : "bg-primary text-primary-foreground hover:bg-primary/90 border-gray-400"
                 }`
                 }`}

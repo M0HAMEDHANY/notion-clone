@@ -29,9 +29,9 @@ const NewDocumentButton = () => {
 
   return (
     <Button onClick={handleCreatNewDocument} disabled={isPending} className={`${theme === "dark"
-      ? "bg-gray-300 text-gray-900 hover:bg-gray-800 hover:text-gray-300 border-gray-700"
+      ? "bg-gray-300 text-[#020817] hover:bg-gray-800 hover:text-gray-300 border-gray-700"
       : "bg-primary text-primary-foreground hover:bg-primary/90 border-gray-400"
-    }`}>
+      }`}>
       {isPending ? "Creating..." : "Create New Document"}
     </Button>
   );
