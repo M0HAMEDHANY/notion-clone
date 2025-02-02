@@ -1,36 +1,187 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# NotionX ✨  
+**A modern Notion clone with real-time collaboration**  
+[Live Demo](https://notionx.vercel.app) | [Report Issue](https://github.com/M0HAMEDHANY/NotionX/issues)
 
-## Getting Started
+![NotionX Banner](./screenshot-banner.png)  
+*Replace with your actual banner image*
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Table of Contents
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- [Features](#-features)
+- [Tech Stack](#-tech-stack)
+- [Installation](#-installation)
+- [Configuration Guide](#-configuration-guide)
+- [Screenshots](#️-screenshots)
+- [Contributing](#-contributing)
+- [License](#-license)
+- [Acknowledgements](#-acknowledgements)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🚀 Features
 
-## Learn More
+- **Real-time Collaboration**  
+  Multi-user editing powered by [Liveblocks](https://liveblocks.io)
 
-To learn more about Next.js, take a look at the following resources:
+- **Rich Document Editor**  
+  Enjoy markdown-style formatting and support for nested components
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Secure Authentication**  
+  Seamless Google/GitHub sign-in via [Clerk](https://clerk.dev)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Dark Mode**  
+  User-friendly theme switching for low-light environments
 
-## Deploy on Vercel
+- **Document Management**  
+  Create, update, and delete notes with instant syncing
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Team Collaboration**  
+  Invite collaborators via email with granular permission controls
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Version History**  
+  Automatic document backups using Firebase Firestore
+
+---
+
+## 🛠 Tech Stack
+
+**Frontend**  
+- [Next.js](https://nextjs.org) ![Next.js](https://img.shields.io/badge/Next.js-14.1.0-000000?logo=next.js)  
+- [TypeScript](https://www.typescriptlang.org) ![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178C6?logo=typescript)  
+- [Tailwind CSS](https://tailwindcss.com) ![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4-06B6D4?logo=tailwind-css)  
+- [shadcn/ui](https://ui.shadcn.com) ![shadcn/ui](https://img.shields.io/badge/shadcn/ui-0.5.0-000000)
+
+**Backend & Services**  
+- [Liveblocks](https://liveblocks.io) ![Liveblocks](https://img.shields.io/badge/Liveblocks-1.5-000000)  
+- [Clerk](https://clerk.dev) ![Clerk](https://img.shields.io/badge/Clerk-4.28-000000)  
+- [Firebase](https://firebase.google.com) ![Firebase](https://img.shields.io/badge/Firebase-10.5-FFCA28?logo=firebase)
+
+**Animation**  
+- [Framer Motion](https://www.framer.com/motion) ![Framer Motion](https://img.shields.io/badge/Framer_Motion-10.16-0055FF?logo=framer)
+
+---
+
+## 📦 Installation
+
+Follow these steps to set up NotionX locally:
+
+1. **Clone the Repository**
+
+   ```bash
+   git clone https://github.com/M0HAMEDHANY/NotionX.git
+   cd NotionX
+   ```
+
+2. **Install Dependencies**
+
+   ```bash
+   npm install
+   ```
+
+3. **Configure Environment Variables**
+
+   Create a `.env.local` file in the project root and add your credentials:
+
+   ```env
+    NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY
+    CLERK_SECRET_KEY
+    NEXT_PUBLIC_FIREBASE_API_KEY
+    NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN
+    NEXT_PUBLIC_FIREBASE_PROJECT_ID
+    NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET
+    NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID
+    NEXT_PUBLIC_FIREBASE_APP_ID
+    NEXT_PUBLIC_LIVEBLOCKS_PUBLIC_KEY
+    NEXT_PUBLIC_LIVEBLOCKS_PRIVATE_KEY
+   ```
+
+4. **Start the Development Server**
+
+   ```bash
+   npm run dev
+   ```
+
+Your application should now be running at [http://localhost:3000](http://localhost:3000).
+
+---
+
+## 🔧 Configuration Guide
+
+### Clerk Authentication
+
+1. Visit the [Clerk Dashboard](https://dashboard.clerk.dev) and create a new project.
+2. Enable Google and GitHub authentication methods.
+3. Add `localhost:3000` to your list of allowed origins.
+4. Update your environment variables with the provided keys.
+
+### Liveblocks Setup
+
+1. Sign up at [Liveblocks](https://liveblocks.io) and create a new project.
+2. Generate your secret key for room authorization.
+3. Configure presence and storage settings in your `liveblocks.config.ts` file.
+
+### Firebase Integration
+
+1. Create a new Firestore database via the [Firebase Console](https://console.firebase.google.com).
+2. Structure your database as follows:
+
+   ```json
+   {
+     "documents": {
+       "docId": {
+         "title": "Document Title",
+         "content": "Markdown Content",
+         "ownerId": "user_id",
+         "collaborators": ["user@example.com"]
+       }
+     }
+   }
+   ```
+
+3. Update your `.env.local` with your Firebase configuration values.
+
+---
+
+## 🖼️ Screenshots
+
+| Feature               | Preview                      |
+|-----------------------|------------------------------|
+| **Document Editor**   | ![Screenshot 2025-02-02 031254](https://github.com/user-attachments/assets/ab777d00-9b73-4105-ab79-0a1ebab46318)|
+| **Real-time Collab**  | ![Screenshot 2025-02-02 031016](https://github.com/user-attachments/assets/eebd04b0-0ba9-423e-82fc-fc893061e3b9)|
+| **Dark Mode**         | ![Screenshot 2025-02-02 022906](https://github.com/user-attachments/assets/67a63da8-7325-476b-ab47-128add175ab3)|
+| **User Management**   | ![Screenshot 2025-02-02 031107](https://github.com/user-attachments/assets/e77b5bbe-d2e8-4a01-872f-b65e74dfc002)|
+
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Follow these steps to submit a pull request:
+
+1. **Fork the Repository**
+
+2. **Create a Feature Branch**
+
+   ```bash
+   git checkout -b feature/awesome-feature
+   ```
+
+3. **Commit Your Changes**
+
+   ```bash
+   git commit -m "Add awesome feature"
+   ```
+
+4. **Push to Your Branch**
+
+   ```bash
+   git push origin feature/awesome-feature
+   ```
+
+5. **Open a Pull Request**
+
+For major changes, please open an issue first to discuss what you would like to change.
+
+
