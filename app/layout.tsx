@@ -9,7 +9,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { ThemeProvider } from "@/components/ThemeProvider";
 
 export const metadata: Metadata = {
-  title: "NotionX - Your Digital Workspace",
+  title: "NotionX",
   description: "A powerful Notion clone for organizing your work and life",
 };
 

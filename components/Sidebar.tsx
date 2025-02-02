@@ -1,20 +1,13 @@
 'use client'
-import { MenuSquareIcon } from "lucide-react"
 import NewDocumentButton from "./NewDocumentButton"
 import { useCollection } from "react-firebase-hooks/firestore"
-import {
-    Sheet,
-    SheetContent,
-    SheetHeader,
-    SheetTitle,
-    SheetTrigger,
-} from "@/components/ui/sheet"
 import { useUser } from "@clerk/nextjs"
 import { collectionGroup, where, query, DocumentData } from "firebase/firestore";
 import { db } from "@/firebase"
 import { useEffect, useState } from "react"
 import { useTheme } from "./ThemeProvider"
 import SidebarOptions from "./SidebarOptions"
+
 interface RoomDocument extends DocumentData {
     createdAt: string;
     role: "owner" | "editor";
@@ -22,9 +15,7 @@ interface RoomDocument extends DocumentData {
     roomId: string;
 }
 interface SidebarProps {
-
     className?: string;
-
 }
 
 const Sidebar: React.FC<SidebarProps> = ({ className }) => {
@@ -48,7 +39,6 @@ const Sidebar: React.FC<SidebarProps> = ({ className }) => {
     )
     useEffect(() => {
         if (!data) return;
-        // Group the rooms by owner and editor
         const grouped = data.docs.reduce<{
             owner: RoomDocument[];
             editor: RoomDocument[];
@@ -68,7 +58,6 @@ const Sidebar: React.FC<SidebarProps> = ({ className }) => {
                     });
                 }
                 return acc;
-
             }
             , { owner: [], editor: [] });
 
@@ -107,22 +96,8 @@ const Sidebar: React.FC<SidebarProps> = ({ className }) => {
     );
     return (
         <div className={` ${className}  scrollbar-hide`}>
-            <div className={` p-2 md:p-5  relative ${theme === "dark" ? "bg-[#020817] text-gray-200" : "bg-gray-200"}   `}>
-                <div className="md:hidden">
-                    <Sheet>
-                        <SheetTrigger>
-                            <MenuSquareIcon className={theme === "dark" ? "text-white" : "text-gray-700"} size={24} />
-                        </SheetTrigger>
-                        <SheetContent side={"left"} className={theme === "dark" ? "bg-[#020817]" : "bg-white"}>
-                            <SheetHeader>
-                                <SheetTitle className={theme === "dark" ? "text-white" : "text-[#020817]"}>Menu</SheetTitle>
-                                <div className="overflow-y-auto scrollbar-hide">{menuOptions}</div>
-                            </SheetHeader>
-                        </SheetContent>
-                    </Sheet>
-                </div>
-
-                <div className="hidden md:inline overflow-y-auto scrollbar-hide">
+            <div className={`lg:p-5 relative ${theme === "dark" ? "bg-[#020817] text-gray-200" : "bg-gray-200"}   `}>
+                <div className="hidden lg:inline overflow-y-auto scrollbar-hide">
                     {menuOptions}
                 </div>
             </div>
