@@ -2,8 +2,8 @@
 **A modern Notion clone with real-time collaboration**  
 [Live Demo](https://notionx.vercel.app) | [Report Issue](https://github.com/M0HAMEDHANY/NotionX/issues)
 
-![NotionX Banner](./screenshot-banner.png)  
-*Replace with your actual banner image*
+![WhatsApp Image 2025-02-02 at 03 33 47_5f816bc8](https://github.com/user-attachments/assets/cf46e68d-92f3-4d2e-80b3-68929eea5aa1)
+ 
 
 ---
 
