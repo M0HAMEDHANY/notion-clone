@@ -2,22 +2,8 @@
 **A modern Notion clone with real-time collaboration**  
 [Live Demo](https://notionx.vercel.app) | [Report Issue](https://github.com/M0HAMEDHANY/NotionX/issues)
 
-<img src="https://github.com/user-attachments/assets/cf46e68d-92f3-4d2e-80b3-68929eea5aa1" alt="WhatsApp Image" width="400" height="300" />
+<img src="https://github.com/user-attachments/assets/cf46e68d-92f3-4d2e-80b3-68929eea5aa1" alt="WhatsApp Image" width="300" height="300" />
  
-
----
-
-## Table of Contents
-
-- [Features](#-features)
-- [Tech Stack](#-tech-stack)
-- [Installation](#-installation)
-- [Configuration Guide](#-configuration-guide)
-- [Screenshots](#️-screenshots)
-- [Contributing](#-contributing)
-- [License](#-license)
-- [Acknowledgements](#-acknowledgements)
-
 ---
 
 ## 🚀 Features
