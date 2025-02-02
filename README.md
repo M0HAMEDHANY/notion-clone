@@ -34,18 +34,18 @@
 ## 🛠 Tech Stack
 
 **Frontend**  
-- [Next.js](https://nextjs.org) ![Next.js](https://img.shields.io/badge/Next.js-14.1.0-000000?logo=next.js)  
-- [TypeScript](https://www.typescriptlang.org) ![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178C6?logo=typescript)  
-- [Tailwind CSS](https://tailwindcss.com) ![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4-06B6D4?logo=tailwind-css)  
-- [shadcn/ui](https://ui.shadcn.com) ![shadcn/ui](https://img.shields.io/badge/shadcn/ui-0.5.0-000000)
+- ![Next.js](https://img.shields.io/badge/Next.js-14.1.0-000000?logo=next.js)  
+- ![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178C6?logo=typescript)  
+- ![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4-06B6D4?logo=tailwind-css)  
+- ![shadcn/ui](https://img.shields.io/badge/shadcn/ui-0.5.0-000000)
 
 **Backend & Services**  
-- [Liveblocks](https://liveblocks.io) ![Liveblocks](https://img.shields.io/badge/Liveblocks-1.5-000000)  
-- [Clerk](https://clerk.dev) ![Clerk](https://img.shields.io/badge/Clerk-4.28-000000)  
-- [Firebase](https://firebase.google.com) ![Firebase](https://img.shields.io/badge/Firebase-10.5-FFCA28?logo=firebase)
+- ![Liveblocks](https://img.shields.io/badge/Liveblocks-1.5-000000)  
+- ![Clerk](https://img.shields.io/badge/Clerk-4.28-000000)  
+- ![Firebase](https://img.shields.io/badge/Firebase-10.5-FFCA28?logo=firebase)
 
 **Animation**  
-- [Framer Motion](https://www.framer.com/motion) ![Framer Motion](https://img.shields.io/badge/Framer_Motion-10.16-0055FF?logo=framer)
+- ![Framer Motion](https://img.shields.io/badge/Framer_Motion-10.16-0055FF?logo=framer)
 
 ---
 
